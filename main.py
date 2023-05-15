@@ -55,10 +55,14 @@ async def genesis(inter, id: commands.Range[0, 5499]):
 
 @show.sub_command(description="Shows info for the given generations bee ID",
                   name="generations_bee")
-async def generations(inter, id: commands.Range[0, 5499]):
+async def generations(inter, id: commands.Range[0, 200000]):
   url = generationsBeeUrl + str(id) + ".json"
   print("calling: " + url)
-  result = requests.get(url, headers=defaultHeaders).json()
+  try:
+      result = requests.get(url, headers=defaultHeaders).json()
+  except:
+      await inter.response.send_message("This bee doesn't seem to exist", ephemeral=True)
+      return
 
   embed = disnake.Embed(title=result['name'], colour=0xFFD324)
   embed.set_image(url=result['image'].replace(" ", "%20"))
