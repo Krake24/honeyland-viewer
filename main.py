@@ -23,7 +23,7 @@ async def show(inter):
 
 
 @show.sub_command(description="Shows info for the given land ID")
-async def land(inter, id: commands.Range[1, 2000]):
+async def land(inter, id: commands.Range[1, 4000]):
   url = landUrl + f"{id:05d}" + ".json"
   print("calling: " + url)
   result = requests.get(url, headers=defaultHeaders).json()
