@@ -31,6 +31,8 @@ async def land(inter, id: commands.Range[1, 4000]):
   embed = disnake.Embed(title=result['name'], colour=0xFFD324)
   embed.set_image(url=result['image'])
   for attribute in result['attributes']:
+    if len(embed.fields) >= 25:
+      break
     embed.add_field(name=attribute['trait_type'],
                     value=attribute['value'],
                     inline=True)
@@ -47,6 +49,8 @@ async def genesis(inter, id: commands.Range[0, 5499]):
   embed = disnake.Embed(title=result['name'], colour=0xFFD324)
   embed.set_image(url=result['image'].replace(" ", "%20"))
   for attribute in result['attributes']:
+    if len(embed.fields) >= 25:
+      break
     embed.add_field(name=attribute['trait_type'],
                     value=attribute['value'],
                     inline=True)
@@ -67,6 +71,8 @@ async def generations(inter, id: int):
   embed = disnake.Embed(title=result['name'], colour=0xFFD324)
   embed.set_image(url=result['image'].replace(" ", "%20"))
   for attribute in result['attributes']:
+    if len(embed.fields) >= 25:
+      break
     embed.add_field(name=attribute['trait_type'],
                     value=attribute['value'],
                     inline=True)
