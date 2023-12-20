@@ -55,7 +55,7 @@ async def genesis(inter, id: commands.Range[0, 5499]):
 
 @show.sub_command(description="Shows info for the given generations bee ID",
                   name="generations_bee")
-async def generations(inter, id: commands.Range[0, 200000]):
+async def generations(inter, id: int):
   url = generationsBeeUrl + str(id) + ".json"
   print("calling: " + url)
   try:
